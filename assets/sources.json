@@ -20,9 +20,9 @@
     "rlink": "https://github.com/croyla/bmtc-screens/"
   },
   "PMPML-GTFS": {
-    "rlink": "https://github.com/croyla/pmpml-gtfs/"
+    "link": "https://github.com/croyla/pmpml-gtfs/"
   },
   "BMTC-Platforms-GeoJSON": {
-    "rlink": "https://github.com/croyla/bmtc-platforms-geojson/"
+    "link": "https://github.com/croyla/bmtc-platforms-geojson/"
   }
 }
