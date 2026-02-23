@@ -1,0 +1,28 @@
+{
+  "Banashankari Bus Station": {
+    "link": "https://banashankari.blrtransit.com/",
+    "rlink": "https://github.com/croyla/banashankari/"  
+  },
+  "Majestic (Bengawalk)": {
+      "link": "https://majestic.bmtc.co.in/",
+      "rlink": "https://github.com/bengawalk/majestic/"
+  },
+  "Livebus / KIA-Live (Bengawalk)": {
+      "link": "https://livebus.bengawalk.com/",
+      "rlink": "https://github.com/bengawalk/kia-live/"
+  },
+  "BMTC-Platforms": {
+    "link": "https://platforms.blrtransit.com/",
+    "rlink": "https://github.com/croyla/bmtc-platforms/"
+  },
+  "BMTC-Screens": {
+    "link": "https://screens.blrtransit.com/",
+    "rlink": "https://github.com/croyla/bmtc-screens/"
+  },
+  "PMPML-GTFS": {
+    "rlink": "https://github.com/croyla/pmpml-gtfs/"
+  },
+  "BMTC-Platforms-GeoJSON": {
+    "rlink": "https://github.com/croyla/bmtc-platforms-geojson/"
+  }
+}
