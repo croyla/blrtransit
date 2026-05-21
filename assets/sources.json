@@ -1,28 +1,68 @@
 {
-  "Banashankari Bus Station": {
-    "link": "https://banashankari.blrtransit.com/",
-    "rlink": "https://github.com/croyla/banashankari/"  
+  "Majestic with Bengawalk": {
+    "link": "https://majestic.bmtc.co.in/",
+    "rlink": "https://github.com/bengawalk/majestic/",
+    "about": "The team at Bengawalk reached out to me to make a small webapp for smoother navigation at the BMTC Majestic Bus Stand, This went alongside their updates to the physical signage at the bus stand."
+
   },
-  "Majestic (Bengawalk)": {
-      "link": "https://majestic.bmtc.co.in/",
-      "rlink": "https://github.com/bengawalk/majestic/"
+  "Livebus / KIA-Live with Bengawalk": {
+    "link": "https://livebus.bengawalk.com/",
+    "rlink": "https://github.com/bengawalk/kia-live/",
+    "about": "We wanted to try integrating live data into the kia website that Bengawalk has, upon numerous iterations we ended up with this webapp."
   },
-  "Livebus / KIA-Live (Bengawalk)": {
-      "link": "https://livebus.bengawalk.com/",
-      "rlink": "https://github.com/bengawalk/kia-live/"
+  "Transitrouter with Vonter": {
+    "link": "https://transitrouter.pages.dev/",
+    "rlink": "https://github.com/Vonter/transitrouter/",
+    "about": "I extensively use this tool, so I've significantly contributed to it. Ranging from adding features, metrorail layers, datasets, and other contributions."
   },
-  "BMTC-Platforms": {
+  "BMTC Platforms": {
     "link": "https://platforms.blrtransit.com/",
-    "rlink": "https://github.com/croyla/bmtc-platforms/"
+    "rlink": "https://github.com/croyla/bmtc-platforms/",
+    "about": "I had found it difficult to navigate large BMTC bus stands, so I made a webapp in 2024 December. I revamped the design to match my work with Bengawalk on the Majestic tool in early 2026."
   },
-  "BMTC-Screens": {
-    "link": "https://screens.blrtransit.com/",
-    "rlink": "https://github.com/croyla/bmtc-screens/"
+  "GTFS View": {
+    "link": "https://gtfs.blrtransit.com/",
+    "rlink": "https://github.com/croyla/gtfs-view/",
+    "about": "I work with quite a few gtfs datasets, so I created a small visualisation utility to view these datasets at a glance."
   },
-  "PMPML-GTFS": {
-    "link": "https://github.com/croyla/pmpml-gtfs/"
+  "Mumbai Bus GTFS": {
+    "link": "https://mobilitydatabase.org/feeds/gtfs/mdb-3138",
+    "routelink": "https://transitrouter.pages.dev/#/mumbai/",
+    "vizlink": "https://gtfs.blrtransit.com/?source=https://github.com/croyla/mumbai-gtfs/raw/refs/heads/main/gtfs_compat.zip",
+    "about": "I compiled numerous sources to generate a GTFS dataset to the best of my ability, this attempts to cover a large part of MMR."
   },
-  "BMTC-Platforms-GeoJSON": {
-    "link": "https://github.com/croyla/bmtc-platforms-geojson/"
+  "PMPML GTFS": {
+    "link": "https://mobilitydatabase.org/feeds/gtfs/mdb-3137",
+    "rlink": "https://github.com/croyla/pmpml-gtfs",
+    "routelink": "https://transitrouter.pages.dev/#/pune/",
+    "vizlink": "https://gtfs.blrtransit.com/?source=https://github.com/croyla/pmpml-gtfs/raw/refs/heads/main/pmpml_gtfs_compat.zip",
+    "about": "I compiled available sources to generate a GTFS dataset to the best of my ability. This tries to cover operations by Pune Mahanagar Parivahan Mandal Limited (PMPML)"
+  },
+  "Hubli-Dharwad BRT GTFS": {
+    "link": "https://mobilitydatabase.org/feeds/gtfs/mdb-3141",
+    "routelink": "https://transitrouter.pages.dev/#/hubli-dharwad/",
+    "vizlink": "https://gtfs.blrtransit.com/?source=https://github.com/croyla/hdbrts-gtfs/raw/refs/heads/main/gtfs_compat.zip",
+    "about": "I compiled available sources to generate a GTFS dataset to the best of my ability. This tries to cover operations by Hubli-Dharwad BRTS Company (HDBRTS)"
+  },
+  "Rajkot BRT GTFS": {
+    "link": "https://mobilitydatabase.org/feeds/gtfs/mdb-3142",
+    "routelink": "https://transitrouter.pages.dev/#/rajkot/",
+    "vizlink": "https://gtfs.blrtransit.com/?source=https://github.com/croyla/rrl-gtfs/raw/refs/heads/main/gtfs_compat.zip",
+    "about": "I compiled available sources to generate a GTFS dataset to the best of my ability. This tries to cover operations by Rajkot Rampath Limited (RRL)"
+  },
+  "Ahmedabad Bus GTFS": {
+    "link": "https://mobilitydatabase.org/feeds/gtfs/mdb-3131",
+    "routelink": "https://transitrouter.pages.dev/#/ahmedabad/",
+    "vizlink": "https://gtfs.blrtransit.com/?source=https://github.com/croyla/amd-gtfs/raw/refs/heads/main/gtfs_compat.zip",
+    "about": "I compiled numerous sources to generate a GTFS dataset to the best of my ability, this attempts to cover a large part of Ahmedabad."
+  },
+  "BMTC Platforms GeoJSON": {
+    "link": "https://github.com/croyla/bmtc-platforms-geojson/",
+    "routelink": "https://platforms.blrtransit.com/",
+    "about": "I did ground surveys to collect geographic information about large bus stations, then built a small dataset by compiling available sources as well as my ground surveys. This is what my Majestic and BMTC Platforms projects are built atop."
+  },
+  "BMTC Screens": {
+    "rlink": "https://github.com/croyla/bmtc-screens/",
+    "about": "I made and used a tool for viewing upcoming arrivals of BMTC buses. Now Transitrouter has this functionality baked in, thus making this tool obsolete."
   }
 }
