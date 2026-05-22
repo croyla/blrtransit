@@ -17,13 +17,13 @@
 <h1 class="flex justify-center">
     <img src="assets/images/logo.svg" alt="BLRTransit" width="100" height="100">
 </h1>
-<ul id="link-list" class="list-none p-0 flex flex-col items-center"></ul>
+<ul id="link-list" class="list-none p-0 flex flex-col items-center">Doing things for better transit.</ul>
 
 <!-- Modal -->
 <div id="modal-overlay" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
   <div id="modal-card" class="bg-white rounded-2xl shadow-2xl p-6 max-w-lg w-full text-left">
     <div class="flex justify-between items-start mb-4">
-      <h2 id="modal-title" class="text-xl font-bold text-gray-800 pr-4 leading-snug"></h2>
+      <h2 id="modal-title" class="text-xl font-bold text-gray-800 pr-4 leading-snug"></h2> <h3 id="modal-time" class="text-m text-gray-400 mr-auto"></h3>
       <button id="modal-close" class="text-gray-400 hover:text-gray-700 text-2xl leading-none flex-shrink-0">&times;</button>
     </div>
     <div id="modal-links" class="flex flex-wrap gap-2 mb-4"></div>
@@ -50,11 +50,23 @@
 
   const overlay = document.getElementById('modal-overlay');
   const modalTitle = document.getElementById('modal-title');
+  const modalTime = document.getElementById('modal-time');
   const modalAbout = document.getElementById('modal-about');
   const modalLinks = document.getElementById('modal-links');
 
+  function preloadFavicon(entry) {
+    return new Promise(resolve => {
+      if (!entry.link) { resolve(ICONS['link']); return; }
+      const img = new Image();
+      img.onload = () => resolve(img.src);
+      img.onerror = () => resolve(ICONS['link']);
+      img.src = `${new URL(entry.link).origin}/favicon.ico`;
+    });
+  }
+
   function openModal(name, entry) {
     modalTitle.textContent = name;
+    modalTime.textContent = entry.time || '';
     modalAbout.textContent = entry.about || '';
     modalLinks.innerHTML = '';
 
@@ -67,12 +79,11 @@
       a.title = LABELS[key];
       a.className = 'inline-flex items-center gap-1.5 px-8 py-2.5 rounded-lg text-sm font-medium no-underline transition-colors duration-200 bg-[#ecf0f1] text-[#2c3e50] hover:bg-[#bdc3c7]';
       const img = document.createElement('img');
-      img.src = ICONS[key];
+      img.src = key === 'link' ? entry._favicon : ICONS[key];
       img.alt = '';
       img.width = 18;
       img.height = 18;
       a.appendChild(img);
-      // a.appendChild(document.createTextNode(LABELS[key]));
       modalLinks.appendChild(a);
     });
 
@@ -86,13 +97,28 @@
   fetch('assets/sources.json')
     .then(r => r.json())
     .then(data => {
+      return Promise.all(
+        Object.values(data).map(entry =>
+          preloadFavicon(entry).then(src => { entry._favicon = src; })
+        )
+      ).then(() => data);
+    })
+    .then(data => {
       const linkList = document.getElementById('link-list');
       Object.keys(data).forEach(key => {
         const li = document.createElement('li');
         li.className = 'my-2';
         const btn = document.createElement('button');
-        btn.className = 'w-[300px] text-center text-[#2c3e50] bg-[#ecf0f1] px-6 py-4 rounded-lg transition-colors duration-200 text-lg font-medium hover:bg-[#bdc3c7] cursor-pointer';
-        btn.textContent = key;
+        btn.className = 'w-[400px] text-[#2c3e50] bg-[#ecf0f1] px-6 py-4 rounded-lg transition-colors duration-200 text-lg font-medium hover:bg-[#bdc3c7] cursor-pointer';
+        const text = document.createElement('p');
+        text.className = 'text-left';
+        text.textContent = key;
+        const time = document.createElement('p');
+        time.className = ' font-light text-right';
+        time.textContent = data[key].time;
+        // btn.textContent = key;
+        btn.appendChild(text);
+        btn.appendChild(time);
         btn.addEventListener('click', () => openModal(key, data[key]));
         li.appendChild(btn);
         linkList.appendChild(li);
