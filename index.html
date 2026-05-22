@@ -19,7 +19,7 @@
 </h1>
 <ul id="link-list" class="list-none p-0 flex flex-col items-center">Doing things for better transit.</ul>
 
-<!-- Modal -->
+<!-- Card modal -->
 <div id="modal-overlay" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
   <div id="modal-card" class="bg-white rounded-2xl shadow-2xl p-6 max-w-lg w-full text-left">
     <div class="flex justify-between items-start mb-4">
@@ -125,8 +125,78 @@
       });
     })
     .catch(err => console.error('Error loading JSON:', err));
+
 </script>
-<footer>
-</footer>
+<section class="mt-12 mb-8 mx-auto w-[400px] text-left">
+  <h2 class="text-xl text-gray-400 mb-5">Send a message</h2>
+  <form id="contact-form" class="flex flex-col gap-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-1">Name <span class="text-gray-400 font-normal">(optional)</span></label>
+      <input id="cf-name" type="text" placeholder="Your name" class="w-full px-3 py-2 rounded-lg bg-white text-gray-800 text-sm outline-none focus:ring-2 focus:ring-[#2c3e50]">
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-1">Message</label>
+      <textarea id="cf-message" rows="4" placeholder="Your message content." class="w-full px-3 py-2 rounded-lg bg-white text-gray-800 text-sm outline-none focus:ring-2 focus:ring-[#2c3e50] resize-none"></textarea>
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-1">Where can I reach you? <span class="text-gray-400 font-normal">(optional)</span></label>
+      <input id="cf-reach" type="text" placeholder="e.g. email, phone number, github, etc…" class="w-full px-3 py-2 rounded-lg bg-white text-gray-800 text-sm outline-none focus:ring-2 focus:ring-[#2c3e50]">
+    </div>
+    <p id="contact-error" class="hidden text-red-500 text-sm"></p>
+    <button type="submit" class="bg-[#ecf0f1] text-[#2c3e50] font-medium py-2 rounded-lg hover:bg-[#bdc3c7] transition-colors duration-200">Send a message</button>
+  </form>
+  <p id="contact-success" class="hidden text-green-600 text-sm mt-2">Message sent — thanks!</p>
+</section>
+
+<script>
+  const WORKER_URL = 'https://contactform.blrtransit.com';
+
+  document.getElementById('contact-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const errorEl = document.getElementById('contact-error');
+    const successEl = document.getElementById('contact-success');
+    errorEl.classList.add('hidden');
+    successEl.classList.add('hidden');
+
+    const message = document.getElementById('cf-message').value.trim();
+    if (!message) {
+      errorEl.textContent = 'Message is required.';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+
+    const payload = {
+      name:      document.getElementById('cf-name').value.trim(),
+      message,
+      reachOn:   document.getElementById('cf-reach').value.trim(),
+      browser:   navigator.userAgent,
+      timezone:  Intl.DateTimeFormat().resolvedOptions().timeZone,
+      timestamp: new Date().toISOString(),
+    };
+
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      e.target.reset();
+      successEl.classList.remove('hidden');
+    } catch (err) {
+      errorEl.textContent = 'Failed to send — please try again.';
+      errorEl.classList.remove('hidden');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send';
+    }
+  });
+</script>
+
+<footer></footer>
 </body>
 </html>
