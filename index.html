@@ -17,7 +17,7 @@
 <h1 class="flex justify-center">
     <img src="assets/images/logo.svg" alt="BLRTransit" width="100" height="100">
 </h1>
-<ul id="link-list" class="list-none p-0 flex flex-col items-center">Doing things for better transit.</ul>
+<ul id="link-list" class="list-none p-0 flex flex-col items-center w-full max-w-[400px] mx-auto">Doing things for better transit.</ul>
 
 <!-- Card modal -->
 <div id="modal-overlay" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
@@ -107,9 +107,9 @@
       const linkList = document.getElementById('link-list');
       Object.keys(data).forEach(key => {
         const li = document.createElement('li');
-        li.className = 'my-2';
+        li.className = 'my-2 w-full';
         const btn = document.createElement('button');
-        btn.className = 'w-[400px] text-[#2c3e50] bg-[#ecf0f1] px-6 py-4 rounded-lg transition-colors duration-200 text-lg font-medium hover:bg-[#bdc3c7] cursor-pointer';
+        btn.className = 'w-full text-[#2c3e50] bg-[#ecf0f1] px-6 py-4 rounded-lg transition-colors duration-200 text-lg font-medium hover:bg-[#bdc3c7] cursor-pointer';
         const text = document.createElement('p');
         text.className = 'text-left';
         text.textContent = key;
@@ -127,19 +127,19 @@
     .catch(err => console.error('Error loading JSON:', err));
 
 </script>
-<section class="mt-12 mb-8 mx-auto w-[400px] text-left">
+<section class="mt-12 mb-8 mx-auto max-w-[400px] text-left">
   <form id="contact-form" class="flex flex-col gap-4">
     <div>
-      <label class="block text-sm font-medium text-gray-600 mb-1">Name <span class="text-gray-400 font-normal">(optional)</span></label>
-      <input id="cf-name" type="text" placeholder="Your name" class="w-full px-3 py-2 rounded-lg bg-neutral-100 text-gray-800 text-sm outline-none focus:ring-2 focus:ring-[#2c3e50]">
+      <label class="block text-sm font-medium text-gray-600 mb-1">Name<span class="text-gray-400 font-normal">(optional)</span></label>
+      <input id="cf-name" type="text" placeholder="What do I call you?" class="w-full px-3 py-2 rounded-lg bg-neutral-100 text-gray-800 text-sm outline-none focus:ring-2 focus:ring-[#2c3e50]">
     </div>
     <div>
       <label class="block text-sm font-medium text-gray-600 mb-1">Message</label>
-      <textarea id="cf-message" rows="4" placeholder="Your message content." class="w-full px-3 py-2 rounded-lg bg-neutral-100 text-gray-800 text-sm outline-none focus:ring-2 focus:ring-[#2c3e50] resize-none"></textarea>
+      <textarea id="cf-message" rows="4" placeholder="What do you wanna say?" class="w-full px-3 py-2 rounded-lg bg-neutral-100 text-gray-800 text-sm outline-none focus:ring-2 focus:ring-[#2c3e50] resize-none"></textarea>
     </div>
     <div>
       <label class="block text-sm font-medium text-gray-600 mb-1">Where can I reach you? <span class="text-gray-400 font-normal">(optional)</span></label>
-      <input id="cf-reach" type="text" placeholder="e.g. email, phone number, github, etc…" class="w-full px-3 py-2 rounded-lg bg-neutral-100 text-gray-800 text-sm outline-none focus:ring-2 focus:ring-[#2c3e50]">
+      <input id="cf-reach" type="text" placeholder="Where do I reach you?" class="w-full px-3 py-2 rounded-lg bg-neutral-100 text-gray-800 text-sm outline-none focus:ring-2 focus:ring-[#2c3e50]">
     </div>
     <p id="contact-error" class="hidden text-red-500 text-sm"></p>
     <button type="submit" class="bg-[#ecf0f1] text-[#2c3e50] font-medium py-2 rounded-lg hover:bg-[#bdc3c7] transition-colors duration-200">Send a message</button>
